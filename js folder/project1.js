@@ -3,6 +3,11 @@ $(document).ready(function () {
     var floorPath = $(".home-image path")
     var counterDown = $(".counter-down");
     var counterUp = $(".counter-up");
+    var buttonPrimary = $(".button-primary");
+    var modalCloseButton = $(".modal-close-button");
+    var modal = $(".modal")
+/*     var flats = $(".flats path");
+    var flatLink = $(".flat-link"); */
 
     floorPath.on("mouseover", function () {
         floorPath.removeClass("current-floor");
@@ -30,4 +35,20 @@ $(document).ready(function () {
         $(`[data-floor=${usCurrentFloor}]`).toggleClass('current-floor');
         }
     })
+
+   /*  flats.on("mouseover", function () { // хз как сделать подчеркивание текста при наведении на квартиры
+        flatLink.toggleClass('.flat-link-hover');
+        currentFlats = $(this).attr("data-flats");
+        flatLink.text(currentFlats);
+    }) */
+    
+    floorPath.on("click", toggleModal);
+
+    buttonPrimary.on("click", toggleModal);
+
+    modalCloseButton.on("click", toggleModal);
+
+    function toggleModal() {
+        modal.toggleClass('is-open');
+    }
 });
