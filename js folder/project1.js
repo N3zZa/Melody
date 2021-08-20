@@ -6,8 +6,9 @@ $(document).ready(function () {
     var buttonPrimary = $(".button-primary");
     var modalCloseButton = $(".modal-close-button");
     var modal = $(".modal")
-/*     var flats = $(".flats path");
-    var flatLink = $(".flat-link"); */
+    var currentFlats = 1; // переменная с текущей квартирой
+    var flatsPath = $(".flats path"); // квартиры SVG
+    var flatsPathItem = $(".flat-item a"); // характеристики квартир
 
     floorPath.on("mouseover", function () {
         floorPath.removeClass("current-floor");
@@ -36,12 +37,24 @@ $(document).ready(function () {
         }
     })
 
-   /*  flats.on("mouseover", function () { // хз как сделать подчеркивание текста при наведении на квартиры
-        flatLink.toggleClass('.flat-link-hover');
-        currentFlats = $(this).attr("data-flats");
-        flatLink.text(currentFlats);
-    }) */
+
+    flatsPath.on('mouseover', function () {
+        currentFlats = $(this).attr("data-flats"); // записываем текущее значение в переменную с квартирами
+        flatsPath.removeClass("current-flats"); // удаляем класс квартир
+        flatsPathItem.removeClass("current-flats-item"); // удаляем класс характеристик квартиры
+        $(`[data-flats=${currentFlats}]`).toggleClass("current-flats"); // добавляем класс квартиры
+        $(`[data-item=${currentFlats}]`).toggleClass("current-flats-item"); // добавляем класс характеристик квартиры
+    })
+
+    flatsPathItem.on('mouseover', function () {
+        currentFlats = $(this).attr("data-item"); // записываем текущее значение в переменную с квартирами
+        flatsPath.removeClass("current-flats"); // удаляем класс квартир
+        flatsPathItem.removeClass("current-flats-item"); // удаляем класс характеристик квартиры
+        $(`[data-flats=${currentFlats}]`).toggleClass("current-flats"); // добавляем класс квартиры
+        $(`[data-item=${currentFlats}]`).toggleClass("current-flats-item"); // добавляем класс характеристик квартиры
+    })
     
+
     floorPath.on("click", toggleModal);
 
     buttonPrimary.on("click", toggleModal);

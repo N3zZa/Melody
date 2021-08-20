@@ -190,13 +190,13 @@ path.current-floor {
     display: flex;
     opacity: 0;
     transform: translateY(-10%);
-    transition: transform 0.2s, opacity 0.2s;
+    transition: transform 0.2s, opacity 0.2s;    /* Анимация появления окна */
     transition-delay: 0.2s; /* задержка */
 }
 
 .is-open > .modal-dialog {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0);   /* Анимация появления окна */
 }
 
 .modal-image {
@@ -209,15 +209,6 @@ path.current-floor {
 .flats path {
     opacity: 0;
     cursor: pointer;
-}
-
-.flats path:hover {
-    opacity: 1;
-}
-
-.flat-link-hover {
-    text-decoration: underline;
-    color: #3596F5;
 }
 
 .modal-title {
@@ -250,10 +241,20 @@ path.current-floor {
     color: #635854;
 }
 
-.flat-link:hover {
+/* .flat-link:hover {
+    color: #3596f5;
     text-decoration: underline;
-    color: #3596F5
+} */
+
+.current-flats-item a {
+    color: #3596f5;
+    text-decoration: underline; 
+    cursor: pointer; 
 }
+  
+path.current-flats {
+    opacity: 1;
+} 
 
 .modal-alert {
     margin: 56px 0 0 0;
@@ -273,10 +274,6 @@ path.current-floor {
     cursor: pointer;
 
 }
-
-
-
-
 
 .footer {
     border-top: 4px solid #3596F5;
